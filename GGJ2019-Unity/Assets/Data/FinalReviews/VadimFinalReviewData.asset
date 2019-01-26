@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb7040e08487ee41a26a42fca2aa9cd, type: 3}
+  m_Name: VadimFinalReviewData
+  m_EditorClassIdentifier: 
+  _dialogues:
+  - In my three hundred years on earth, I have never been so disappointed.
+  - In my three hundred years on earth, I have never been so disappointed.
+  - "I\u2019d only suggest this in daylight-related emergencies."
+  - "Good. I\u2019ve had better."
+  - Exquisite. Look forward to being invited back.

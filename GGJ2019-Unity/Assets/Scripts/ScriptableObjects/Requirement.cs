@@ -12,9 +12,9 @@ public struct Review
     public string Dialog { get; private set; }
     public int Reward { get; private set; }
 
-    public Review(string dialog, int level)
+    public Review(string dialog, int reward)
     {
         Dialog = dialog;
-        Reward = level;
+        Reward = reward;
     }
 }

@@ -1,18 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public struct RequirementsParam
-{
-    public float Wetness { get; private set; }
-    public bool NeedLight { get; private set; }
-
-    public RequirementsParam(float wetness, bool needLight)
-    {
-        Wetness = wetness;
-        NeedLight = needLight;
-    }
-}
+using System.Linq;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/RequirementGroup")]
 public class RequirementGroup : ScriptableObject
@@ -27,8 +16,8 @@ public class RequirementGroup : ScriptableObject
         }
     }
 
-    public float GetSatisfaction(RequirementsParam param)
+    public int GetSatisfaction(RoomStatus status)
     {
-        return 0f; //todo : work out the math to calculate the satisfaction
+        return _requirements.Sum(r => r.GetReview(status).Reward); //todo : work out the math to calculate the satisfaction
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "ScriptableObjects/DialogData")]
-public class ReviewDialogData : ScriptableObject
+public class FinalReviewData : ScriptableObject
 {
     [SerializeField] private string[] _dialogues;
 

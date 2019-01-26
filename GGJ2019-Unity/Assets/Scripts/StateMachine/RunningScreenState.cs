@@ -39,6 +39,7 @@ namespace StateMachine
             EventManager.TemperatureChanged += EventManager_TemperatureChanged;
         }
 
+
         public override void Update(float dt)
         {
             _timeRunning += dt;

@@ -5,7 +5,9 @@ using System.Linq;
 
 public enum BooleanRequirementType
 {
+    Water,
     Light,
+    Blood
 }
 [CreateAssetMenu(menuName = "ScriptableObjects/BooleanRequirement")]
 public class BooleanRequirement : Requirement
