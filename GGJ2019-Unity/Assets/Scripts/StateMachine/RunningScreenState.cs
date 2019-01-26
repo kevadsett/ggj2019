@@ -10,10 +10,12 @@ namespace StateMachine
         private int _secondsRunning;
         private int _tenancyLength;
 
+        private RoomStatus _roomStatus;
 
         public RunningScreenState(Transform uiParent, GameObject uiPrefab, Transform hudParent, int tenancyLength) : base(uiParent, uiPrefab, hudParent)
         {
             _tenancyLength = tenancyLength;
+            _roomStatus = new RoomStatus();
         }
 
         public override void Update(float dt)
@@ -27,6 +29,7 @@ namespace StateMachine
                 _previousSecondsRunning = _secondsRunning;
                 if (_secondsRunning >= _tenancyLength)
                 {
+                    StateData.Add("room", _roomStatus);
                     GameRunner.GameStateMachine.ChangeState(EGameState.Review);
                 }
             }

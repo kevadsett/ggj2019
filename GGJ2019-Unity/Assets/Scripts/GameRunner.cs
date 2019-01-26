@@ -20,7 +20,7 @@ public class GameRunner : MonoBehaviour
         {
             { EGameState.Splash, new SplashScreenState(GameCanvasTransform, SplashUI) },
             { EGameState.Running, new RunningScreenState(GameCanvasTransform, RunningUI, UICanvasTransform, GameSettings.TenancyLength) },
-            { EGameState.Review, new SplashScreenState(GameCanvasTransform, ReviewUI) },
+            { EGameState.Review, new ReviewScreenState(GameCanvasTransform, ReviewUI) },
         };
 
         GameStateMachine = new GameStateMachine(stateList, EGameState.Splash);
