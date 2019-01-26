@@ -18,6 +18,6 @@ public class RequirementGroup : ScriptableObject
 
     public int GetSatisfaction(RoomStatus status)
     {
-        return _requirements.Sum(r => r.GetReview(status).Reward); //todo : work out the math to calculate the satisfaction
+        return _requirements.Sum(r => r.GetReview(status).Reward);
     }
 }
