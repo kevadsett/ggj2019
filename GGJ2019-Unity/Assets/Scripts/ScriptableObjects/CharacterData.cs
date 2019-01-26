@@ -28,7 +28,7 @@ public class CharacterData : ScriptableObject
         return _reviewDialogData.GetSummaryReview(grade);
     }
 
-    public List<Review> GetSubReviews(RoomConditions conditions)
+    public List<Review> GetSubReviews(RoomStatus conditions)
     {
         List<Review> _subReviews = new List<Review>();
         _requirements.Requirements.ForEach(r => r.GetReview(conditions));
