@@ -10,7 +10,8 @@ namespace StateMachine
         private int _secondsRunning;
         private int _tenancyLength;
 
-        public RunningScreenState(Transform uiParent, GameObject uiPrefab, int tenancyLength) : base(uiParent, uiPrefab)
+
+        public RunningScreenState(Transform uiParent, GameObject uiPrefab, Transform hudParent, int tenancyLength) : base(uiParent, uiPrefab, hudParent)
         {
             _tenancyLength = tenancyLength;
         }
@@ -21,6 +22,8 @@ namespace StateMachine
             _secondsRunning = Mathf.FloorToInt(_timeRunning);
             if (_secondsRunning != _previousSecondsRunning)
             {
+                Debug.Log(_tenancyLength - _secondsRunning);
+
                 _previousSecondsRunning = _secondsRunning;
                 if (_secondsRunning >= _tenancyLength)
                 {

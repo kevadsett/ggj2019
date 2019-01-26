@@ -4,13 +4,18 @@ namespace StateMachine
 {
     public abstract class AbstractGameState : IGameState
     {
+        protected Transform _hudParent;
+
         private Transform _uiParent;
         private GameObject _uiPrefab;
         private GameObject _uiObject;
-        public AbstractGameState(Transform uiParent, GameObject uiPrefab)
+        private GameObject _hudObject;
+
+        public AbstractGameState(Transform uiParent, GameObject uiPrefab, Transform hudParent = null)
         {
             _uiParent = uiParent;
             _uiPrefab = uiPrefab;
+            _hudParent = hudParent;
         }
 
         public virtual void OnEnter()
