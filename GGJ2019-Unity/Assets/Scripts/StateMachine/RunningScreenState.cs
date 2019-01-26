@@ -46,8 +46,6 @@ namespace StateMachine
             _secondsRunning = Mathf.FloorToInt(_timeRunning);
             if (_secondsRunning != _previousSecondsRunning)
             {
-                Debug.Log(_tenancyLength - _secondsRunning);
-
                 _previousSecondsRunning = _secondsRunning;
                 if (_secondsRunning >= _tenancyLength)
                 {

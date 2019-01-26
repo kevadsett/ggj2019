@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class OnHoverShows : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] GameObject _objectToActivate;
-    [SerializeField] float _timeToActivate;
+    [SerializeField] float _timeToActivate = 0.5f;
 
     bool _isHovering;
     float _timer;
@@ -17,7 +17,7 @@ public class OnHoverShows : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (_isHovering)
         {
             _timer += Time.deltaTime;
-            if(_timer >= _timeToActivate && !_objectToActivate.activeSelf)
+            if (_timer >= _timeToActivate && !_objectToActivate.activeSelf)
             {
                 _objectToActivate.SetActive(true);
                 _timer = 0;
