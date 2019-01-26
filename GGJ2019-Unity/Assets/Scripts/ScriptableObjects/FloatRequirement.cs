@@ -19,11 +19,11 @@ public class FloatRequirement : Requirement
     [SerializeField] private string _tooLowDialog;
     [SerializeField] private string _withinRangeDialog;
 
-    public override Review GetReview(RoomConditions conditions)
+    public override Review GetReview(RoomStatus conditions)
     {
         string toReturn;
         int grade;
-        float roomValue = conditions.GetFloatConditionValue(_requirementType);
+        float roomValue = conditions.FloatConditionAndValues[_requirementType];
 
         if (roomValue < _minValue)
         {

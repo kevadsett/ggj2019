@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Requirement : ScriptableObject
 {
-    public abstract Review GetReview(RoomConditions conditions);
+    public abstract Review GetReview(RoomStatus conditions);
 }
 
 public struct Review

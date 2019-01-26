@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace StateMachine
 {
@@ -15,7 +16,13 @@ namespace StateMachine
         public RunningScreenState(Transform uiParent, GameObject uiPrefab, Transform hudParent, int tenancyLength) : base(uiParent, uiPrefab, hudParent)
         {
             _tenancyLength = tenancyLength;
-            _roomStatus = new RoomStatus();
+            Dictionary<FloatRequirementType, float> floatRequirementAndValues = new Dictionary<FloatRequirementType, float>();
+            Dictionary<BooleanRequirementType, bool> booleanRequirementAndValues = new Dictionary<BooleanRequirementType, bool>();
+            //add kv pairs as you wish
+            floatRequirementAndValues.Add(FloatRequirementType.Temperature, 0);
+            booleanRequirementAndValues.Add(BooleanRequirementType.Water, false);
+
+            _roomStatus = new RoomStatus(booleanRequirementAndValues, floatRequirementAndValues);
         }
 
         public override void Update(float dt)

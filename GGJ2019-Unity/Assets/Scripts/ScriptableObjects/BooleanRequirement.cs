@@ -15,9 +15,9 @@ public class BooleanRequirement : Requirement
     [SerializeField] string _satisfiedDialog;
     [SerializeField] string _unsatisfiedDialog;
 
-    public override Review GetReview(RoomConditions conditions)
+    public override Review GetReview(RoomStatus conditions)
     {
-        bool metCondtions = conditions.GetBooleanConditionValue(_type) == _expectedValue;
+        bool metCondtions = conditions.BooleanConditionAndValues[_type] == _expectedValue;
         string dialog = metCondtions ? _satisfiedDialog : _unsatisfiedDialog;
 
         return new Review(dialog, metCondtions ? 1 : -1);

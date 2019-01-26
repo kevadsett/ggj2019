@@ -1,16 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
+
 public class RoomStatus
 {
-    public float WaterLevel;
-    public float Temperature;
-    public bool Light;
+    Dictionary<BooleanRequirementType, bool> _booleanConditionAndValues;
+    Dictionary<FloatRequirementType, float> _floatConditionAndValues;
 
-    public RoomStatus()
+    public Dictionary<FloatRequirementType, float> FloatConditionAndValues
     {
+        get
+        {
+            return _floatConditionAndValues;
+        }
+    }
+
+    public Dictionary<BooleanRequirementType, bool> BooleanConditionAndValues
+    {
+        get
+        {
+            return _booleanConditionAndValues;
+        }
+    }
+
+    public RoomStatus(Dictionary<BooleanRequirementType, bool> booleanConditionAndValues, Dictionary<FloatRequirementType, float> floatConditionAndValues)
+    {
+        _booleanConditionAndValues = booleanConditionAndValues;
+        _floatConditionAndValues = floatConditionAndValues;
     }
 
     public override string ToString()
     {
-        return "WaterLevel: " + WaterLevel + ", Temperature: " + Temperature + ", Light: " + (Light ? "Light" : "Dark");
+        return "dummy string";
     }
 }
