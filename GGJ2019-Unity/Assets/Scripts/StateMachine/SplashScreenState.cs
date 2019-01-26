@@ -8,5 +8,13 @@ namespace StateMachine
         {
 
         }
+
+        public override void Update(float dt)
+        {
+            if (Input.anyKeyDown)
+            {
+                GameRunner.GameStateMachine.ChangeState(EGameState.Running);
+            }
+        }
     }
 }

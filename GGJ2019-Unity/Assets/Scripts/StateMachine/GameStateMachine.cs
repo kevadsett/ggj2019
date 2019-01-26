@@ -39,6 +39,10 @@ namespace StateMachine
             {
                 _currentState.OnEnter();
             }
+            else
+            {
+                throw new System.Exception("State \"" + newState + "\" doesn't exist in state machine");
+            }
         }
     }
 }

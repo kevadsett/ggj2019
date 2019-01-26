@@ -2,7 +2,7 @@
 
 namespace StateMachine
 {
-    public class AbstractGameState : IGameState
+    public abstract class AbstractGameState : IGameState
     {
         private Transform _uiParent;
         private GameObject _uiPrefab;
@@ -24,8 +24,6 @@ namespace StateMachine
         }
 
         // implement in subclass if needed
-        public void Update(float dt)
-        {
-        }
+        public abstract void Update(float dt);
     }
 }
