@@ -25,7 +25,7 @@ public class GameRunner : MonoBehaviour
                 GameCanvasTransform,
                 RunningUI,
                 UICanvasTransform,
-                GameSettings.TenancyLength,
+                GameSettings,
                 BGMAudioSource
             ) },
             { EGameState.Review, new ReviewScreenState(GameCanvasTransform, ReviewUI) },

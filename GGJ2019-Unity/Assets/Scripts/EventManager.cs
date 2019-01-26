@@ -30,4 +30,13 @@ public class EventManager : UnityEngine.MonoBehaviour
             TemperatureChanged(newTemperature);
         }
     }
+
+    public static event Action<int> GameTimeChanged;
+    public static void Call_GameTimeChanged(int newDay)
+    {
+        if (GameTimeChanged != null)
+        {
+            GameTimeChanged(newDay);
+        }
+    }
 }
