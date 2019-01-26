@@ -17,6 +17,8 @@ public class GameRunner : MonoBehaviour
         var stateList = new Dictionary<EGameState, IGameState>
         {
             { EGameState.Splash, new SplashScreenState(GameCanvasTransform, SplashUI) },
+            { EGameState.Running, new RunningScreenState(GameCanvasTransform, RunningUI) },
+            { EGameState.Review, new SplashScreenState(GameCanvasTransform, ReviewUI) },
         };
 
         GameStateMachine = new GameStateMachine(stateList, EGameState.Splash);

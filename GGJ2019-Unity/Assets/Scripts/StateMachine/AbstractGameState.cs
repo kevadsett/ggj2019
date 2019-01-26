@@ -13,12 +13,12 @@ namespace StateMachine
             _uiPrefab = uiPrefab;
         }
 
-        public void OnEnter()
+        public virtual void OnEnter()
         {
             _uiObject = Object.Instantiate(_uiPrefab, _uiParent);
         }
 
-        public void OnExit()
+        public virtual void OnExit()
         {
             Object.Destroy(_uiObject);
         }
