@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Faye
   _sprite: {fileID: 0}
-  _requirements: {fileID: 0}
+  _requirements: {fileID: 11400000, guid: 01896d9b7aaac8a47b5182bcbf6fe45b, type: 2}
   _reviewDialogData: {fileID: 11400000, guid: 0d055ac9111b68d4fa2900cca8623e2d, type: 2}
   _realtimeFeedbackData: {fileID: 0}

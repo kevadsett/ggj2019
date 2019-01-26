@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: FayeRequirementGroup
   m_EditorClassIdentifier: 
   _requirements:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 816e94a3081a2ca4ba48b05dde8ed065, type: 2}
+  - {fileID: 11400000, guid: 9dde64bb47e184e49a49d466351c39e9, type: 2}
