@@ -14,16 +14,18 @@ public struct RequirementsParam
     }
 }
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Requirements")]
-public class Requirements : ScriptableObject
+[CreateAssetMenu(menuName = "ScriptableObjects/RequirementGroup")]
+public class RequirementGroup : ScriptableObject
 {
-    [SerializeField]
-    [Range(-1f, 1f)]
-    private float _minWetness = 1f;
-    [SerializeField]
-    [Range(-1f, 1f)]
-    private float _maxWetness = 1f;
-    [SerializeField] private bool _needLight;
+    [SerializeField] List<Requirement> _requirements;
+
+    public List<Requirement> Requirements
+    {
+        get
+        {
+            return _requirements;
+        }
+    }
 
     public float GetSatisfaction(RequirementsParam param)
     {
