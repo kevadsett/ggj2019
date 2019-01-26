@@ -33,19 +33,17 @@ public class KnobView : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnValueChange(float percToMax)
     {
-        Debug.Log(Mathf.Lerp(-90f, 90f, percToMax));
-        //_rectTransform.eulerAngles =Vector3.ClampMagnitude(6 new Vector3(0, 0, Mathf.Lerp(-90f, 90f, percToMax));
+        _rectTransform.eulerAngles = Vector3.ClampMagnitude(new Vector3(0, 0, Mathf.Lerp(-90f, 90f, percToMax)), 90f);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("begin");
+        _previousMousePos = Input.mousePosition;
         _clickedOnThis = true;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("end");
         _clickedOnThis = false;
     }
 
