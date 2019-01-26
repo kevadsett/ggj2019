@@ -15,6 +15,8 @@ public class CharacterData : ScriptableObject
 
     [SerializeField] private ReviewDialogData _reviewDialogData;
 
+    [SerializeField] private RealtimeFeedbackData _realtimeFeedbackData;
+
     public float GetSatisfaction(RequirementsParam param)
     {
         return _requirements.GetSatisfaction(param);
@@ -23,5 +25,10 @@ public class CharacterData : ScriptableObject
     public Review GetReview(float satisfaction)
     {
         return _reviewDialogData.GetReview(satisfaction);
+    }
+
+    public AudioClip GetRealtimeFeedback(float satisfaction)
+    {
+        return _realtimeFeedbackData.GetAudioClip(satisfaction);
     }
 }

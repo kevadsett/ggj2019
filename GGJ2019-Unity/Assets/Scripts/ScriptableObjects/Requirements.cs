@@ -24,6 +24,6 @@ public class Requirements : ScriptableObject
 
     public float GetSatisfaction(RequirementsParam param)
     {
-        return 0f;
+        return 0f; //todo : work out the math to calculate the satisfaction
     }
 }
