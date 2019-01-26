@@ -6,32 +6,35 @@ namespace StateMachine
     public class RunningScreenState : AbstractGameState
     {
         private float _timeRunning;
-        private readonly DateTime StartDate = new DateTime(2019, 1, 1);
-        private int PreviousSecondsRunning;
-        private int SecondsRunning;
-        private DateTime CurrentDate;
+        private int _previousSecondsRunning = -1;
+        private int _secondsRunning;
+        private int _tenancyLength;
 
-        public RunningScreenState(Transform uiParent, GameObject uiPrefab) : base(uiParent, uiPrefab)
+        public RunningScreenState(Transform uiParent, GameObject uiPrefab, int tenancyLength) : base(uiParent, uiPrefab)
         {
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            CurrentDate = new DateTime(2019, 1, 1);
+            _tenancyLength = tenancyLength;
         }
 
         public override void Update(float dt)
         {
             _timeRunning += dt;
-            SecondsRunning = Mathf.FloorToInt(_timeRunning);
-            if (SecondsRunning != PreviousSecondsRunning)
+            _secondsRunning = Mathf.FloorToInt(_timeRunning);
+            if (_secondsRunning != _previousSecondsRunning)
             {
-                CurrentDate = CurrentDate.AddDays(1);
-                PreviousSecondsRunning = SecondsRunning;
-
-                Debug.Log(CurrentDate.ToString());
+                _previousSecondsRunning = _secondsRunning;
+                if (_secondsRunning >= _tenancyLength)
+                {
+                    GameRunner.GameStateMachine.ChangeState(EGameState.Review);
+                }
             }
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            _timeRunning = 0f;
+            _secondsRunning = 0;
+            _previousSecondsRunning = -1;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace StateMachine
 
         public override void Update(float dt)
         {
-            if (Input.anyKeyDown)
+            if (Input.anyKey)
             {
                 GameRunner.GameStateMachine.ChangeState(EGameState.Running);
             }

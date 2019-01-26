@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904458f32bfd3407f930fd2cf971aaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameSettings: {fileID: 11400000, guid: d2ab590f507b742dfa38852cfaa56fa9, type: 2}
   GameCanvasTransform: {fileID: 238256327}
   SplashUI: {fileID: 1946982731608186, guid: c17691864a33d49799a3b25ad92c7261, type: 2}
   RunningUI: {fileID: 1946982731608186, guid: 016fb5eaf7f0541ff9babd19a62d92b7, type: 2}
