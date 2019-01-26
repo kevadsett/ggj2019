@@ -8,7 +8,9 @@ public enum BooleanRequirementType
     Water,
     Light,
     Blood,
-    Insect
+    Insect,
+    Meat,
+    Fish
 }
 [CreateAssetMenu(menuName = "ScriptableObjects/BooleanRequirement")]
 public class BooleanRequirement : Requirement
