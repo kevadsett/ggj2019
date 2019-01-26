@@ -22,18 +22,18 @@ namespace StateMachine
         ) : base(uiParent, uiPrefab, hudParent)
         {
             _tenancyLength = tenancyLength;
-            Dictionary<FloatRequirementType, float> floatRequirementAndValues = new Dictionary<FloatRequirementType, float>();
-            Dictionary<BooleanRequirementType, bool> booleanRequirementAndValues = new Dictionary<BooleanRequirementType, bool>();
-            //add kv pairs as you wish
-            floatRequirementAndValues.Add(FloatRequirementType.Temperature, 0);
-            booleanRequirementAndValues.Add(BooleanRequirementType.Water, false);
 
-            _roomStatus = new RoomStatus(booleanRequirementAndValues, floatRequirementAndValues);
+            _roomStatus = new RoomStatus();
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
+
+            _roomStatus.SetFloatValue(FloatRequirementType.Temperature, 0);
+            _roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, 0);
+            _roomStatus.SetBoolValue(BooleanRequirementType.Light, true);
+
             EventManager.LightingChanged += EventManager_LightingChanged;
             EventManager.WaterLevelChanged += EventManager_WaterLevelChanged;
             EventManager.TemperatureChanged += EventManager_TemperatureChanged;
@@ -68,17 +68,19 @@ namespace StateMachine
             EventManager.LightingChanged -= EventManager_LightingChanged;
         }
 
-        void EventManager_LightingChanged(bool obj)
+        void EventManager_LightingChanged(bool isOn)
         {
+            _roomStatus.SetBoolValue(BooleanRequirementType.Light, isOn);
         }
 
-        void EventManager_WaterLevelChanged(float obj)
+        void EventManager_WaterLevelChanged(float newLevel)
         {
+            _roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, newLevel);
         }
 
-
-        void EventManager_TemperatureChanged(float obj)
+        void EventManager_TemperatureChanged(float newTemperature)
         {
+            _roomStatus.SetFloatValue(FloatRequirementType.Temperature, newTemperature);
         }
 
     }

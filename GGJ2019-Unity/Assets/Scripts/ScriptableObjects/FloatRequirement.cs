@@ -5,6 +5,7 @@ using System.Linq;
 
 public enum FloatRequirementType
 {
+    WaterLevel,
     Temperature
 }
 
