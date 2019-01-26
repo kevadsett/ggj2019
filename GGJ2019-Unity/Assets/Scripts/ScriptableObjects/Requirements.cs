@@ -5,10 +5,12 @@ using UnityEngine;
 public struct RequirementsParam
 {
     public float Wetness { get; private set; }
+    public bool NeedLight { get; private set; }
 
-    public RequirementsParam(float wetness)
+    public RequirementsParam(float wetness, bool needLight)
     {
         Wetness = wetness;
+        NeedLight = needLight;
     }
 }
 
@@ -21,6 +23,7 @@ public class Requirements : ScriptableObject
     [SerializeField]
     [Range(-1f, 1f)]
     private float _maxWetness = 1f;
+    [SerializeField] private bool _needLight;
 
     public float GetSatisfaction(RequirementsParam param)
     {
