@@ -7,7 +7,7 @@ public enum BooleanRequirementType
 {
     Water
 }
-
+[CreateAssetMenu(menuName = "ScriptableObjects/BooleanRequirement")]
 public class BooleanRequirement : Requirement
 {
     [SerializeField] BooleanRequirementType _type;

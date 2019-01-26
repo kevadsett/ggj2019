@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/SpeechData")]
+[CreateAssetMenu(menuName = "ScriptableObjects/RealtimeFeedbackData")]
 public class RealtimeFeedbackData : ScriptableObject
 {
     [SerializeField] private AudioClip _happyClip;
