@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [Serializable]
 public struct FloatConditionAndValue
@@ -71,22 +72,34 @@ public struct BooleanConditionAndValue
 
 public class RoomConditions
 {
-    [SerializeField] List<BooleanConditionAndValue> _booleanConditionAndValues;
-    [SerializeField] List<FloatConditionAndValue> _floatConditionAndValues;
+    List<BooleanConditionAndValue> _booleanConditionAndValues;
+    List<FloatConditionAndValue> _floatConditionAndValues;
 
-    public List<BooleanConditionAndValue> BooleanConditionAndValues
+    public RoomConditions(List<BooleanConditionAndValue> booleanConditionAndValues, List<FloatConditionAndValue> floatConditionAndValues)
     {
-        get
-        {
-            return _booleanConditionAndValues;
-        }
+        _booleanConditionAndValues = booleanConditionAndValues;
+        _floatConditionAndValues = floatConditionAndValues;
     }
 
-    public List<FloatConditionAndValue> FloatConditionAndValues
+    public bool GetBooleanConditionValue(BooleanRequirementType type)
     {
-        get
-        {
-            return _floatConditionAndValues;
-        }
+        return _booleanConditionAndValues.First(c => c.Type == type).Value;
+    }
+
+    public float GetFloatConditionValue(FloatRequirementType type)
+    {
+        return _floatConditionAndValues.First(c => c.Type == type).Value;
+    }
+
+    public void SetBooleanConditionValue(BooleanRequirementType type, bool value)
+    {
+        BooleanConditionAndValue conditionAndValue = _booleanConditionAndValues.First(c => c.Type == type);
+        conditionAndValue.Value = value;
+    }
+
+    public void SetFloatConditionValue(FloatRequirementType type, float value)
+    {
+        FloatConditionAndValue conditionAndValue = _floatConditionAndValues.First(c => c.Type == type);
+        conditionAndValue.Value = value;
     }
 }

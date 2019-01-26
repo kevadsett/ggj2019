@@ -23,7 +23,7 @@ public class FloatRequirement : Requirement
     {
         string toReturn;
         int grade;
-        float roomValue = conditions.FloatConditionAndValues.First(c => c.Type == _requirementType).Value;
+        float roomValue = conditions.GetFloatConditionValue(_requirementType);
 
         if (roomValue < _minValue)
         {

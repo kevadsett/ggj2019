@@ -17,7 +17,7 @@ public class BooleanRequirement : Requirement
 
     public override Review GetReview(RoomConditions conditions)
     {
-        bool metCondtions = conditions.BooleanConditionAndValues.First(c => c.Type == _type).Value == _expectedValue;
+        bool metCondtions = conditions.GetBooleanConditionValue(_type) == _expectedValue;
         string dialog = metCondtions ? _satisfiedDialog : _unsatisfiedDialog;
 
         return new Review(dialog, metCondtions ? 1 : -1);
