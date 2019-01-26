@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: FayeTempRequirement
   m_EditorClassIdentifier: 
   _minValue: 0
-  _maxValue: 0
-  _requirementType: 0
-  _tooHighDialog: 
-  _tooLowDialog: 
+  _maxValue: 1
+  _requirementType: 1
+  _tooHighDialog: "A little overheated. Couldn\u2019t adjust thermostat with my webbed
+    hands. "
+  _tooLowDialog: Slightly on the chilly side..
   _withinRangeDialog: 

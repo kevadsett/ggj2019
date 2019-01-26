@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418fbb3c7c8818c4dae0e4bce3361c93, type: 3}
   m_Name: VadimBlood
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 2
   _expectedValue: 1
-  _satisfiedDialog: The apartment was in an ideal location.
-  _unsatisfiedDialog: The apartment was so terribly dry.
+  _satisfiedDialog: My every whim catered for.
+  _unsatisfiedDialog: The cupboards were bare. Not a drop to be found.

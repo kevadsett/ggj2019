@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4301dd94a0da57643897accfcea8b0d7, type: 3}
-  m_Name: New Float Requirement
+  m_Name: PenelopeBereniceTempRequirement
   m_EditorClassIdentifier: 
-  _minValue: 0
-  _maxValue: 0
-  _requirementType: 0
-  _tooHighDialog: 
+  _minValue: 0.3
+  _maxValue: 1
+  _requirementType: 1
+  _tooHighDialog: Overheated
   _tooLowDialog: 
-  _withinRangeDialog: 
+  _withinRangeDialog: Very convenient for the opera house.

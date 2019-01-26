@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418fbb3c7c8818c4dae0e4bce3361c93, type: 3}
   m_Name: WilburMeatRequirement
   m_EditorClassIdentifier: 
-  _type: 0
-  _expectedValue: 0
-  _satisfiedDialog: 
-  _unsatisfiedDialog: 
+  _type: 4
+  _expectedValue: 1
+  _satisfiedDialog: Had everything I needed
+  _unsatisfiedDialog: There was absolutely no food I could possibly stomach, even
+    with my culinary talents. I starved. Literally.
