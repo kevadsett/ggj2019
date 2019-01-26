@@ -13,7 +13,13 @@ namespace StateMachine
 
         private RoomStatus _roomStatus;
 
-        public RunningScreenState(Transform uiParent, GameObject uiPrefab, Transform hudParent, int tenancyLength) : base(uiParent, uiPrefab, hudParent)
+        public RunningScreenState(
+            Transform uiParent,
+            GameObject uiPrefab,
+            Transform hudParent,
+            int tenancyLength,
+            AudioSource BGMAudioSource
+        ) : base(uiParent, uiPrefab, hudParent)
         {
             _tenancyLength = tenancyLength;
             Dictionary<FloatRequirementType, float> floatRequirementAndValues = new Dictionary<FloatRequirementType, float>();
@@ -23,6 +29,14 @@ namespace StateMachine
             booleanRequirementAndValues.Add(BooleanRequirementType.Water, false);
 
             _roomStatus = new RoomStatus(booleanRequirementAndValues, floatRequirementAndValues);
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            EventManager.LightingChanged += EventManager_LightingChanged;
+            EventManager.WaterLevelChanged += EventManager_WaterLevelChanged;
+            EventManager.TemperatureChanged += EventManager_TemperatureChanged;
         }
 
         public override void Update(float dt)
@@ -48,6 +62,24 @@ namespace StateMachine
             _timeRunning = 0f;
             _secondsRunning = 0;
             _previousSecondsRunning = -1;
+
+            EventManager.TemperatureChanged -= EventManager_TemperatureChanged;
+            EventManager.WaterLevelChanged -= EventManager_WaterLevelChanged;
+            EventManager.LightingChanged -= EventManager_LightingChanged;
         }
+
+        void EventManager_LightingChanged(bool obj)
+        {
+        }
+
+        void EventManager_WaterLevelChanged(float obj)
+        {
+        }
+
+
+        void EventManager_TemperatureChanged(float obj)
+        {
+        }
+
     }
 }

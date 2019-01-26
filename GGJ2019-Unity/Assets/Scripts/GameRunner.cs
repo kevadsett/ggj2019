@@ -14,12 +14,20 @@ public class GameRunner : MonoBehaviour
     public GameObject RunningUI;
     public GameObject ReviewUI;
 
+    public AudioSource BGMAudioSource;
+
     void Start()
     {
         var stateList = new Dictionary<EGameState, IGameState>
         {
             { EGameState.Splash, new SplashScreenState(GameCanvasTransform, SplashUI) },
-            { EGameState.Running, new RunningScreenState(GameCanvasTransform, RunningUI, UICanvasTransform, GameSettings.TenancyLength) },
+            { EGameState.Running, new RunningScreenState(
+                GameCanvasTransform,
+                RunningUI,
+                UICanvasTransform,
+                GameSettings.TenancyLength,
+                BGMAudioSource
+            ) },
             { EGameState.Review, new ReviewScreenState(GameCanvasTransform, ReviewUI) },
         };
 
