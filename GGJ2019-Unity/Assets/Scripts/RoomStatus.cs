@@ -13,25 +13,21 @@ public class RoomStatus
 
     public void SetFloatValue(FloatRequirementType type, float value)
     {
-        if (_floatConditionAndValues.ContainsKey(type))
-        {
-            _floatConditionAndValues[type] = value;
-        }
-        else
-        {
-            _floatConditionAndValues.Add(type, value);
-        }
+        _floatConditionAndValues[type] = value;
     }
 
     public void SetBoolValue(BooleanRequirementType type, bool value)
     {
-        if (_booleanConditionAndValues.ContainsKey(type))
-        {
-            _booleanConditionAndValues[type] = value;
-        }
-        else
-        {
-            _booleanConditionAndValues.Add(type, value);
-        }
+        _booleanConditionAndValues[type] = value;
+    }
+
+    public bool TryGetFloatValue(FloatRequirementType type, out float value)
+    {
+        return _floatConditionAndValues.TryGetValue(type, out value);
+    }
+
+    public bool TryGetBoolValue(BooleanRequirementType type, out bool value)
+    {
+        return _booleanConditionAndValues.TryGetValue(type, out value);
     }
 }

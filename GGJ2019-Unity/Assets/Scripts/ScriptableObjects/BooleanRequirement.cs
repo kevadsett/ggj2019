@@ -17,9 +17,19 @@ public class BooleanRequirement : Requirement
 
     public override Review GetReview(RoomStatus conditions)
     {
-        bool metCondtions = conditions.BooleanConditionAndValues[_type] == _expectedValue;
-        string dialog = metCondtions ? _satisfiedDialog : _unsatisfiedDialog;
-
-        return new Review(dialog, metCondtions ? 1 : -1);
+        bool metConditions;
+        if (conditions.TryGetBoolValue(_type, out metConditions))
+        {
+            if (metConditions == _expectedValue)
+            {
+                string dialog = metConditions ? _satisfiedDialog : _unsatisfiedDialog;
+                return new Review(dialog, metConditions ? 1 : -1);
+            }
+        }
+        else
+        {
+            throw new System.Exception("Type " + _type + " doesn't exist in dictionary");
+        }
+        return new Review();
     }
 }

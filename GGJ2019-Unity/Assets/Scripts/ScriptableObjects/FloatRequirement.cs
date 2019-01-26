@@ -24,23 +24,26 @@ public class FloatRequirement : Requirement
     {
         string toReturn;
         int grade;
-        float roomValue = conditions.FloatConditionAndValues[_requirementType];
-
-        if (roomValue < _minValue)
+        float roomValue;
+        if (conditions.TryGetFloatValue(_requirementType, out roomValue))
         {
-            toReturn = _tooLowDialog;
-            grade = -1;
+            if (roomValue < _minValue)
+            {
+                toReturn = _tooLowDialog;
+                grade = -1;
+            }
+            else if (roomValue > _maxValue)
+            {
+                toReturn = _tooHighDialog;
+                grade = -1;
+            }
+            else
+            {
+                toReturn = _withinRangeDialog;
+                grade = 1;
+            }
+            return new Review(toReturn, grade);
         }
-        else if (roomValue > _maxValue)
-        {
-            toReturn = _tooHighDialog;
-            grade = -1;
-        }
-        else
-        {
-            toReturn = _withinRangeDialog;
-            grade = 1;
-        }
-        return new Review(toReturn, grade);
+        return new Review();
     }
 }
