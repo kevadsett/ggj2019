@@ -14,17 +14,34 @@ public class CharacterData : ScriptableObject
 
     [SerializeField] private RequirementGroup _requirements;
 
-    [SerializeField] private ReviewDialogData _reviewDialogData;
+    [SerializeField] private FinalReviewData _reviewDialogData;
 
     [SerializeField] private RealtimeFeedbackData _realtimeFeedbackData;
 
-    public float GetSatisfaction(RequirementsParam param)
+    public float GetSatisfaction(RoomStatus status)
     {
-        return _requirements.GetSatisfaction(param);
+        return _requirements.GetSatisfaction(status);
     }
 
-    public string GetSummaryReview(int grade)
+    public string GetSummaryReview(int satisfaction)
     {
+        int grade = 0;
+        if (satisfaction <= 0)
+        {
+            grade = Random.Range(1, 2);
+        }
+        else if (satisfaction == 1)
+        {
+            grade = 3;
+        }
+        else if (satisfaction == 2)
+        {
+            grade = 4;
+        }
+        else if (satisfaction == 3)
+        {
+            grade = 5;
+        }
         return _reviewDialogData.GetSummaryReview(grade);
     }
 

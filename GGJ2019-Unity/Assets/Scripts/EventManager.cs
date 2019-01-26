@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class EventManager : UnityEngine.MonoBehaviour {
+public class EventManager : UnityEngine.MonoBehaviour
+{
 
     public static event Action<bool> LightingChanged;
-    public static void Call_LightingChanged (bool isOn) {
+    public static void Call_LightingChanged(bool isOn)
+    {
         if (LightingChanged != null)
         {
             LightingChanged(isOn);
