@@ -5,7 +5,6 @@ using System.Linq;
 
 public enum BooleanRequirementType
 {
-    Water,
     Light,
     Blood,
     Insect,

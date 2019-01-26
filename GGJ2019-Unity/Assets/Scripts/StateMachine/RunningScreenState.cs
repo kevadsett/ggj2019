@@ -30,6 +30,7 @@ namespace StateMachine
         public override void OnEnter()
         {
             base.OnEnter();
+            StateData.Add("room", _roomStatus);
 
             _roomStatus.SetFloatValue(FloatRequirementType.Temperature, 0);
             _roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, 0);

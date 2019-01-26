@@ -9,14 +9,14 @@ namespace StateMachine
 
         public static void Add(string key, Object value)
         {
-            Store.Add(key, value);
+            Store[key] = value;
         }
 
         public static Object Get(string key)
         {
             Object value;
             Store.TryGetValue(key, out value);
-            Store.Remove(key);
+
             return value;
         }
     }
