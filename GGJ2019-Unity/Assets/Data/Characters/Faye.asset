@@ -18,5 +18,6 @@ MonoBehaviour:
     portrait of you for $50. Drink your own face. Think about it. Peace. #latteisart"
   _requirements: {fileID: 11400000, guid: 01896d9b7aaac8a47b5182bcbf6fe45b, type: 2}
   _reviewDialogData: {fileID: 11400000, guid: 0d055ac9111b68d4fa2900cca8623e2d, type: 2}
-  _realtimeFeedbackData: {fileID: 0}
-  _sprite: {fileID: 0}
+  _realtimeFeedbackData: {fileID: 11400000, guid: 60cacfa51b1728441a5730072bd3559c,
+    type: 2}
+  _sprite: {fileID: 21300000, guid: 9a6205f7125924447a6c3160c0bde7df, type: 3}

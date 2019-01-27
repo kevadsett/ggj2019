@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4523317dbb6b0584f94c4b61700e1b5c, type: 3}
   m_Name: FayeFeedback
   m_EditorClassIdentifier: 
-  HappyClip: {fileID: 0}
-  SadClip: {fileID: 0}
-  _happyAvatar: {fileID: 0}
-  _neutralAvatar: {fileID: 0}
-  _sadAvatar: {fileID: 0}
+  HappyClip: {fileID: 8300000, guid: 871ebc5c56e0a4767bf6b46c9f3a070a, type: 3}
+  SadClip: {fileID: 8300000, guid: d3b558f1812b849f3b2443baa984435d, type: 3}
+  _happyAvatar: {fileID: 21300000, guid: 9a6205f7125924447a6c3160c0bde7df, type: 3}
+  _neutralAvatar: {fileID: 21300000, guid: 86dd26da467d30941b527b0922aa0691, type: 3}
+  _sadAvatar: {fileID: 21300000, guid: 9adf2a02beecda34d93f0ffca7e80eaf, type: 3}

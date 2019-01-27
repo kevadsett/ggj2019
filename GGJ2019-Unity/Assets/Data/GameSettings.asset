@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d54e4576d4c43949dac01af367dbb1, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  _tenancyLength: 3
+  _tenancyLength: 10
   _secondsPerDay: 1
+  _dayToStartUrgentMusic: 5
+  _tensionClip: {fileID: 8300000, guid: 18feae4a2f3edb94bb824aa2fbcac63f, type: 3}
