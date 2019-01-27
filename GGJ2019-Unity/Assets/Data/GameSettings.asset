@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   _tenancyLength: 10
-  _secondsPerDay: 1
+  _secondsPerDay: 5
   _dayToStartUrgentMusic: 5
   _tensionClip: {fileID: 8300000, guid: 18feae4a2f3edb94bb824aa2fbcac63f, type: 3}
