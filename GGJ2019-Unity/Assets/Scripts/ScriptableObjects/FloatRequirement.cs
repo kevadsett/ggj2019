@@ -35,8 +35,6 @@ public class FloatRequirement : Requirement
 
     private void OnDestroy()
     {
-        Debug.Log("Stopped listening for for temperature changes");
-
         EventManager.TemperatureChanged -= EventManager_ValueChanged;
     }
 
@@ -47,7 +45,6 @@ public class FloatRequirement : Requirement
         float roomValue;
         if (conditions.TryGetFloatValue(_requirementType, out roomValue))
         {
-            Debug.Log("roomValue: " + roomValue + ", minValue: " + _minValue + ", maxValue" + _maxValue);
             if (roomValue < _minValue)
             {
                 toReturn = _tooLowDialog;
@@ -63,9 +60,7 @@ public class FloatRequirement : Requirement
                 toReturn = _withinRangeDialog;
                 grade = 1;
             }
-
-            Debug.Log("Previous grade: " + _previousGrade + ", new grade: " + grade);
-
+            
             if (_previousGrade != grade)
             {
                 if (grade == 1)
@@ -88,7 +83,6 @@ public class FloatRequirement : Requirement
 
     void EventManager_ValueChanged(float obj)
     {
-        Debug.Log("I heard the temperature change");
         GetReview((RoomStatus)StateData.Get("room"));
     }
 

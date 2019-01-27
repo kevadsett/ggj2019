@@ -29,7 +29,6 @@ public class BooleanRequirement : Requirement
         switch(_type)
         {
             case BooleanRequirementType.Light:
-                Debug.Log("Listening for light changes");
                 EventManager.LightingChanged += EventManager_ValueChanged;
                 break;
         }
@@ -45,10 +44,8 @@ public class BooleanRequirement : Requirement
         bool currentBoolStatus;
         if (conditions.TryGetBoolValue(_type, out currentBoolStatus))
         {
-            Debug.Log("currentBoolStatus: " + currentBoolStatus + ", _expectedValue: " + _requiredValue);
 
             bool meetsCondition = currentBoolStatus == _requiredValue;
-            Debug.Log("meetsCondition: " + meetsCondition + ", previouslyMet: " + _previouslyMetConditions + ", initialised: " + _initialised);
             if (meetsCondition != _previouslyMetConditions || _initialised == false)
             {
                 if (meetsCondition == true)
@@ -83,7 +80,6 @@ public class BooleanRequirement : Requirement
 
     void EventManager_ValueChanged(bool obj)
     {
-        Debug.Log("Heard a light change");
         GetReview((RoomStatus)StateData.Get("room"));
     }
 
