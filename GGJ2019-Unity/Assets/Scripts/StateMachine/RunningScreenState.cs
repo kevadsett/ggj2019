@@ -40,6 +40,7 @@ namespace StateMachine
             base.OnEnter();
 
             _currentCharacter = _characters[Random.Range(0, _characters.Count)];
+            StateData.Add("character", _currentCharacter);
             Avatar = GameObject.Find("Avatar").GetComponent<Image>();
             FeedbackAudio = GameObject.Find("FeedbackAudio").GetComponent<AudioSource>();
 
