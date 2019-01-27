@@ -39,8 +39,8 @@ public class FloatRequirement : Requirement
 
     public override Review GetReview(RoomStatus conditions)
     {
-        string toReturn;
-        int grade;
+        string toReturn = "";
+        int grade = 1;
         float roomValue;
         if (conditions.TryGetFloatValue(_requirementType, out roomValue))
         {
@@ -59,7 +59,7 @@ public class FloatRequirement : Requirement
                 toReturn = _withinRangeDialog;
                 grade = 1;
             }
-            
+
             if (_previousGrade != grade)
             {
                 if (grade == 1)
@@ -75,9 +75,10 @@ public class FloatRequirement : Requirement
                 }
                 _previousGrade = grade;
             }
-            return new Review(toReturn, grade);
         }
-        return new Review();
+        
+        return new Review(toReturn, grade);
+
     }
 
     void EventManager_ValueChanged(float obj)

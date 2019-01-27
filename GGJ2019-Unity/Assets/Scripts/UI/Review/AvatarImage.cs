@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class AvatarImage : MonoBehaviour
 {
     [SerializeField] Image _image;
-    [SerializeField] CharacterData _data;
+    CharacterData _data;
     private void Start()
     {
-        _image = GetComponent<Image>();
-        _data = StateData.Get("character") as CharacterData;
+        _data = (CharacterData)StateData.Get("character");
+
+        SetImage();
     }
 
     void SetImage()

@@ -8,7 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6cbe86ff96c1e04caa06dd6f627ebe6, type: 3}
-  m_Name: CharlesRequirementGroup
+  m_Script: {fileID: 11500000, guid: 418fbb3c7c8818c4dae0e4bce3361c93, type: 3}
+  m_Name: CharlieMeatRequirement
   m_EditorClassIdentifier: 
-  _requirements: []
+  _type: 4
+  _requiredValue: 0
+  _satisfiedDialog: Well stocked.
+  _unsatisfiedDialog: The cupboards were bare.

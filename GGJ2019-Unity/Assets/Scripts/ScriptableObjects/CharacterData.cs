@@ -46,7 +46,7 @@ public class CharacterData : ScriptableObject
     [SerializeField] private RealtimeFeedbackData _realtimeFeedbackData;
 
     [SerializeField] private Sprite _sprite;
-    public Sprite Sprite { get; private set; }
+    public Sprite Sprite { get { return _sprite; } }
 
     public int GetSatisfaction(RoomStatus status)
     {
@@ -65,10 +65,10 @@ public class CharacterData : ScriptableObject
 
     public List<Review> GetSubReviews(RoomStatus conditions)
     {
-        List<Review> _subReviews = new List<Review>();
-        _requirements.Requirements.ForEach(r => r.GetReview(conditions));
+        List<Review> subReviews = new List<Review>();
+        _requirements.Requirements.ForEach(r => subReviews.Add(r.GetReview(conditions)));
 
-        return _subReviews;
+        return subReviews;
     }
 
     public AudioClip GetSadSound()

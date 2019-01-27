@@ -8,4 +8,10 @@ public class GameSettings : ScriptableObject
 
     [SerializeField] private int _secondsPerDay;
     public int SecondsPerDay { get { return _secondsPerDay; } }
+
+    [SerializeField] private int _dayToStartUrgentMusic;
+    public int DayToStartUrgentMusic { get { return _dayToStartUrgentMusic; } }
+
+    [SerializeField] private AudioClip _tensionClip;
+    public AudioClip TensionClip { get { return _tensionClip; } }
 }

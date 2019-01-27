@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Name: Wilbur
   m_EditorClassIdentifier: 
   _name: Wilbur
-  _sprite: {fileID: 21300000, guid: b0c2df65d34cc4fcb96c61bc94a7635a, type: 3}
+  _address: Near Tromso, Norway.
+  _occupation: Pastry chef
+  _flavouredText: "They told me I couldn\u2019t make a croissant out of seal flesh.
+    I said \u201Cwatch me\u201D. "
   _requirements: {fileID: 11400000, guid: aa4e198984c8c6043be76282dbad0920, type: 2}
   _reviewDialogData: {fileID: 11400000, guid: a56bf958b9be6f0478acc1ae27ed0e4f, type: 2}
   _realtimeFeedbackData: {fileID: 11400000, guid: 77c6709efc3dbd54fad140d5465faa41,
     type: 2}
+  _sprite: {fileID: 21300000, guid: 1aa48a068295b4ea9aa864bf3c2022f0, type: 3}
