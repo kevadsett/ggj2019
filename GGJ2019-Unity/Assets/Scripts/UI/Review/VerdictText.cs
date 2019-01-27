@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
 
-public class VerdictText : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+[RequireComponent(typeof(Text))]
+public class VerdictText : ReviewRelatedText
+{
+    protected override void SetText()
+    {
+        int satisfaction = character.GetSatisfaction(status);
+        relatedText.text = character.GetSummaryReview(satisfaction).Review;
+    }
 }

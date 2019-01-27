@@ -25,7 +25,7 @@ public class CharacterData : ScriptableObject
     public string Name { get { return _name; } }
 
     [SerializeField] private string _address;
-    public string Location
+    public string Address
     {
         get
         {
@@ -45,6 +45,8 @@ public class CharacterData : ScriptableObject
 
     [SerializeField] private RealtimeFeedbackData _realtimeFeedbackData;
 
+    [SerializeField] private Sprite _sprite;
+    public Sprite Sprite { get; private set; }
 
     public int GetSatisfaction(RoomStatus status)
     {

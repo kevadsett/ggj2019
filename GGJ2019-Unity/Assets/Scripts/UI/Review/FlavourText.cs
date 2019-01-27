@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlavourText : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class FlavourText : ReviewRelatedText
+{
+    protected override void SetText()
+    {
+        relatedText.text = character.FlavouredText;
+    }
 }

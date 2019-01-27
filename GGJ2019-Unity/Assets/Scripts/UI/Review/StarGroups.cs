@@ -32,6 +32,5 @@ public class StarGroups : MonoBehaviour
         {
             _images[i].sprite = _starImage;
         }
-
     }
 }
