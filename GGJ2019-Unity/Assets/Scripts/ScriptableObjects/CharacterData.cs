@@ -9,11 +9,27 @@ public class CharacterData : ScriptableObject
     [SerializeField] private string _name;
     public string Name { get { return _name; } }
 
+    [SerializeField] private string _address;
+    public string Location
+    {
+        get
+        {
+            return _address;
+        }
+    }
+
+    [SerializeField] private string _occupation;
+    public string Occupation { get { return _occupation; } }
+
+    [SerializeField] private string _flavouredText;
+    public string FlavouredText { get { return _flavouredText; } }
+
     [SerializeField] private RequirementGroup _requirements;
 
     [SerializeField] private FinalReviewData _reviewDialogData;
 
     [SerializeField] private RealtimeFeedbackData _realtimeFeedbackData;
+
 
     public float GetSatisfaction(RoomStatus status)
     {
