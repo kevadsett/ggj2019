@@ -8,6 +8,16 @@ using StateMachine;
 [RequireComponent(typeof(Image))]
 public class Toggle : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] Sprite _falseImage;
+    [SerializeField] Sprite _trueImage;
+
+    private Image MyImage;
+
+    void OnStart()
+    {
+        MyImage = GetComponent<Image>();
+    }
+
     [SerializeField] BooleanRequirementType _requirementType;
 
     public void OnPointerClick(PointerEventData eventData)
@@ -15,6 +25,8 @@ public class Toggle : MonoBehaviour, IPointerClickHandler
         RoomStatus status = (RoomStatus)(StateData.Get("room"));
         bool value = false;
         status.TryGetBoolValue(_requirementType, out value);
+
+        MyImage.sprite = value ? _trueImage : _falseImage;
 
         switch (_requirementType)
         {
