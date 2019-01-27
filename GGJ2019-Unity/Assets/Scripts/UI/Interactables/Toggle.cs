@@ -8,10 +8,17 @@ using StateMachine;
 [RequireComponent(typeof(Image))]
 public class Toggle : MonoBehaviour, IPointerClickHandler
 {
+    public enum ToggleType
+    {
+        Normal,
+        OnOnly,
+        OffOnly
+    }
     [SerializeField] Sprite _falseImage;
     [SerializeField] Sprite _trueImage;
     [SerializeField] BooleanRequirementType _requirementType;
     [SerializeField] bool _startValue;
+    [SerializeField] ToggleType _toggleType;
 
     private Image MyImage;
     private RoomStatus _roomStatus;
@@ -23,6 +30,16 @@ public class Toggle : MonoBehaviour, IPointerClickHandler
 
         _roomStatus = (RoomStatus)(StateData.Get("room"));
         _roomStatus.SetBoolValue(_requirementType, _startValue);
+
+        switch (_requirementType)
+        {
+            case BooleanRequirementType.Water:
+                EventManager.WaterChanged += EventManager_ValueChanged;
+                break;
+            case BooleanRequirementType.Light:
+                EventManager.LightingChanged += EventManager_ValueChanged;
+                break;
+        }
     }
 
 
@@ -30,29 +47,39 @@ public class Toggle : MonoBehaviour, IPointerClickHandler
     {
         bool value = false;
         _roomStatus.TryGetBoolValue(_requirementType, out value);
+        switch (_toggleType)
+        {
+            case ToggleType.OffOnly:
+                if (value == false)
+                {
+                    return;
+                }
+                break;
+            case ToggleType.OnOnly:
+                if (value)
+                {
+                    return;
+                }
+                break;
+        }
         value = !value;
-        MyImage.sprite = value ? _trueImage : _falseImage;
 
         switch (_requirementType)
         {
             case BooleanRequirementType.Light:
                 EventManager.Call_LightingChanged(value);
                 break;
-            case BooleanRequirementType.Blood:
-                EventManager.Call_BloodChanged(value);
-                break;
-            case BooleanRequirementType.Insect:
-                EventManager.Call_InsectChanged(value);
-                break;
-            case BooleanRequirementType.Meat:
-                EventManager.Call_MeatChanged(value);
-                break;
-            case BooleanRequirementType.Fish:
-                EventManager.Call_FishChanged(value);
+            case BooleanRequirementType.Water:
+                EventManager.Call_WaterChanged(value);
                 break;
             default:
                 throw new System.ArgumentException("non supported");
         }
+    }
+
+    void EventManager_ValueChanged(bool value)
+    {
+        MyImage.sprite = value ? _trueImage : _falseImage;
     }
 
 }

@@ -804,7 +804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -894,7 +894,6 @@ MonoBehaviour:
   - {fileID: 224108131241669326}
   - {fileID: 224165587916875340}
   - {fileID: 224476189441501058}
-  CalendarSound: {fileID: 0}
 --- !u!114 &114773995499471052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -908,13 +907,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b0c2df65d34cc4fcb96c61bc94a7635a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1aa48a068295b4ea9aa864bf3c2022f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

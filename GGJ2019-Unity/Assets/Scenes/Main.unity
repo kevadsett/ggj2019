@@ -171,10 +171,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1947329392277446, guid: 82f34541925d84858acee4bc01d4faa8, type: 2}
-      propertyPath: m_Name
-      value: CalendarSound
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f34541925d84858acee4bc01d4faa8, type: 2}
   m_IsPrefabAsset: 0

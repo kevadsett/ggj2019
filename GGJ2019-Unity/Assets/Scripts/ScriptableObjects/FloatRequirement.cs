@@ -6,7 +6,6 @@ using StateMachine;
 
 public enum FloatRequirementType
 {
-    WaterLevel,
     Temperature
 }
 

@@ -7,6 +7,7 @@ using StateMachine;
 public enum BooleanRequirementType
 {
     Light,
+    Water,
     Blood,
     Insect,
     Meat,

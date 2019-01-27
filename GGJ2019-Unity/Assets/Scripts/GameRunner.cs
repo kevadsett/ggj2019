@@ -22,7 +22,7 @@ public class GameRunner : MonoBehaviour
         var roomStatus = new RoomStatus();
 
         roomStatus.SetFloatValue(FloatRequirementType.Temperature, 0);
-        roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, 0);
+        roomStatus.SetBoolValue(BooleanRequirementType.Water, false);
         roomStatus.SetBoolValue(BooleanRequirementType.Light, true);
 
         StateData.Add("room", roomStatus);

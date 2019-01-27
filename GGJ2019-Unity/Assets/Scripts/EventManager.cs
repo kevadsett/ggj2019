@@ -50,12 +50,12 @@ public class EventManager : UnityEngine.MonoBehaviour
         }
     }
 
-    public static event Action<float> WaterLevelChanged;
-    public static void Call_WaterLevelChanged(float newLevel)
+    public static event Action<bool> WaterChanged;
+    public static void Call_WaterChanged(bool isOn)
     {
-        if (WaterLevelChanged != null)
+        if (WaterChanged != null)
         {
-            WaterLevelChanged(newLevel);
+            WaterChanged(isOn);
         }
     }
 

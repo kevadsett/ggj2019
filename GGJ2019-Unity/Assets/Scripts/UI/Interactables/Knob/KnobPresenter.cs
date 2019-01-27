@@ -33,14 +33,11 @@ public class KnobPresenter
         _currentValue = 1 - _currentValue;
         switch (_floatRequirementType)
         {
-            case FloatRequirementType.WaterLevel:
-                EventManager.Call_WaterLevelChanged(_currentValue);
-                break;
             case FloatRequirementType.Temperature:
                 EventManager.Call_TemperatureChanged(_currentValue);
                 break;
             default:
-                throw new ArgumentException("we do not support that type yet, implement yourself noob");
+                throw new ArgumentException("we do not support that type (" + _floatRequirementType + ") yet, implement yourself noob");
         }
         gameObject.SetActive(false);
     }
