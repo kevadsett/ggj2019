@@ -13,7 +13,7 @@ public class Toggle : MonoBehaviour, IPointerClickHandler
 
     private Image MyImage;
 
-    void OnStart()
+    void Start()
     {
         MyImage = GetComponent<Image>();
     }
