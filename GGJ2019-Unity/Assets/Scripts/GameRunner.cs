@@ -15,7 +15,7 @@ public class GameRunner : MonoBehaviour
     public GameObject RunningUI;
     public GameObject ReviewUI;
 
-    public AudioSource BGMAudioSource;
+    public List<CharacterData> Characters;
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class GameRunner : MonoBehaviour
                 RunningUI,
                 UICanvasTransform,
                 GameSettings,
-                BGMAudioSource
+                Characters
             ) },
             { EGameState.Review, new ReviewScreenState(GameCanvasTransform, ReviewUI) },
         };

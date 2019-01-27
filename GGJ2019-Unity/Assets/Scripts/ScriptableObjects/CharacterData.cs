@@ -9,9 +9,6 @@ public class CharacterData : ScriptableObject
     [SerializeField] private string _name;
     public string Name { get { return _name; } }
 
-    [SerializeField] private Sprite _sprite;
-    public Sprite Sprite { get { return _sprite; } }
-
     [SerializeField] private RequirementGroup _requirements;
 
     [SerializeField] private FinalReviewData _reviewDialogData;
@@ -53,8 +50,13 @@ public class CharacterData : ScriptableObject
         return _subReviews;
     }
 
-    public AudioClip GetRealtimeFeedback(float satisfaction)
+    public AudioClip GetRealtimeFeedbackAudio(RoomStatus status)
     {
-        return _realtimeFeedbackData.GetAudioClip(satisfaction);
+        return _realtimeFeedbackData.GetAudioClip(GetSatisfaction(status));
+    }
+
+    public Sprite GetRealtimeFeedbackImage(RoomStatus status)
+    {
+        return _realtimeFeedbackData.GetSprite(GetSatisfaction(status));
     }
 }

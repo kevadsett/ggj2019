@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Wilbur
   m_EditorClassIdentifier: 
   _name: Wilbur
-  _sprite: {fileID: 0}
-  _requirements: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: b0c2df65d34cc4fcb96c61bc94a7635a, type: 3}
+  _requirements: {fileID: 11400000, guid: aa4e198984c8c6043be76282dbad0920, type: 2}
   _reviewDialogData: {fileID: 11400000, guid: a56bf958b9be6f0478acc1ae27ed0e4f, type: 2}
-  _realtimeFeedbackData: {fileID: 0}
+  _realtimeFeedbackData: {fileID: 11400000, guid: 77c6709efc3dbd54fad140d5465faa41,
+    type: 2}

@@ -1,6 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace StateMachine
 {
@@ -14,15 +14,23 @@ namespace StateMachine
 
         private RoomStatus _roomStatus;
 
+        private List<CharacterData> _characters;
+
+        private CharacterData _currentCharacter;
+
+        private Image Avatar;
+        private AudioSource FeedbackAudio;
+
         public RunningScreenState(
             Transform uiParent,
             GameObject uiPrefab,
             Transform hudParent,
             GameSettings gameSettings,
-            AudioSource BGMAudioSource
+            List<CharacterData> characters
         ) : base(uiParent, uiPrefab, hudParent)
         {
             _gameSettings = gameSettings;
+            _characters = characters;
 
             _roomStatus = (RoomStatus)StateData.Get("room");
         }
@@ -31,6 +39,11 @@ namespace StateMachine
         {
             base.OnEnter();
 
+            _currentCharacter = _characters[Random.Range(0, _characters.Count)];
+            Avatar = GameObject.Find("Avatar").GetComponent<Image>();
+            FeedbackAudio = GameObject.Find("FeedbackAudio").GetComponent<AudioSource>();
+
+            Avatar.sprite = _currentCharacter.GetRealtimeFeedbackImage(_roomStatus);
 
             EventManager.LightingChanged += EventManager_LightingChanged;
             EventManager.WaterLevelChanged += EventManager_WaterLevelChanged;
@@ -80,16 +93,28 @@ namespace StateMachine
         void EventManager_LightingChanged(bool isOn)
         {
             _roomStatus.SetBoolValue(BooleanRequirementType.Light, isOn);
+            DoCharacterReaction();
         }
 
         void EventManager_WaterLevelChanged(float newLevel)
         {
             _roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, newLevel);
+            DoCharacterReaction();
         }
 
         void EventManager_TemperatureChanged(float newTemperature)
         {
             _roomStatus.SetFloatValue(FloatRequirementType.Temperature, newTemperature);
+            DoCharacterReaction();
+        }
+
+        void DoCharacterReaction()
+        {
+            var audio = _currentCharacter.GetRealtimeFeedbackAudio(_roomStatus);
+            var newSprite = _currentCharacter.GetRealtimeFeedbackImage(_roomStatus);
+            Avatar.sprite = newSprite;
+            FeedbackAudio.clip = audio;
+            FeedbackAudio.Play();
         }
 
     }

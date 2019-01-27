@@ -59,4 +59,5 @@ MonoBehaviour:
   SplashUI: {fileID: 1946982731608186, guid: c17691864a33d49799a3b25ad92c7261, type: 2}
   RunningUI: {fileID: 1946982731608186, guid: 016fb5eaf7f0541ff9babd19a62d92b7, type: 2}
   ReviewUI: {fileID: 1597163152666736, guid: ca3322bffc2f640589d2de8c4debfa8c, type: 2}
-  BGMAudioSource: {fileID: 0}
+  Characters:
+  - {fileID: 11400000, guid: ac1d42918610d9b4dac14ba6124dfd0c, type: 2}
