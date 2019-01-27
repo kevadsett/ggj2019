@@ -10,40 +10,45 @@ public class Toggle : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] Sprite _falseImage;
     [SerializeField] Sprite _trueImage;
+    [SerializeField] BooleanRequirementType _requirementType;
+    [SerializeField] bool _startValue;
 
     private Image MyImage;
+    private RoomStatus _roomStatus;
 
     void Start()
     {
         MyImage = GetComponent<Image>();
+        MyImage.sprite = _startValue ? _trueImage : _falseImage;
+
+        _roomStatus = (RoomStatus)(StateData.Get("room"));
+        _roomStatus.SetBoolValue(_requirementType, _startValue);
     }
 
-    [SerializeField] BooleanRequirementType _requirementType;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        RoomStatus status = (RoomStatus)(StateData.Get("room"));
         bool value = false;
-        status.TryGetBoolValue(_requirementType, out value);
-
+        _roomStatus.TryGetBoolValue(_requirementType, out value);
+        value = !value;
         MyImage.sprite = value ? _trueImage : _falseImage;
 
         switch (_requirementType)
         {
             case BooleanRequirementType.Light:
-                EventManager.Call_LightingChanged(!value);
+                EventManager.Call_LightingChanged(value);
                 break;
             case BooleanRequirementType.Blood:
-                EventManager.Call_BloodChanged(!value);
+                EventManager.Call_BloodChanged(value);
                 break;
             case BooleanRequirementType.Insect:
-                EventManager.Call_InsectChanged(!value);
+                EventManager.Call_InsectChanged(value);
                 break;
             case BooleanRequirementType.Meat:
-                EventManager.Call_MeatChanged(!value);
+                EventManager.Call_MeatChanged(value);
                 break;
             case BooleanRequirementType.Fish:
-                EventManager.Call_FishChanged(!value);
+                EventManager.Call_FishChanged(value);
                 break;
             default:
                 throw new System.ArgumentException("non supported");

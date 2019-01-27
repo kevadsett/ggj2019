@@ -9,6 +9,11 @@ public class OnClickShows : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameObject _objectToActivate;
 
+    void Start()
+    {
+        _objectToActivate.transform.SetParent(GameObject.Find("UI").transform);
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         _objectToActivate.SetActive(true);

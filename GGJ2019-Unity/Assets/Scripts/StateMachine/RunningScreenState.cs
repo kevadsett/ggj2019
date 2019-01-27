@@ -24,17 +24,13 @@ namespace StateMachine
         {
             _gameSettings = gameSettings;
 
-            _roomStatus = new RoomStatus();
+            _roomStatus = (RoomStatus)StateData.Get("room");
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            StateData.Add("room", _roomStatus);
 
-            _roomStatus.SetFloatValue(FloatRequirementType.Temperature, 0);
-            _roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, 0);
-            _roomStatus.SetBoolValue(BooleanRequirementType.Light, true);
 
             EventManager.LightingChanged += EventManager_LightingChanged;
             EventManager.WaterLevelChanged += EventManager_WaterLevelChanged;

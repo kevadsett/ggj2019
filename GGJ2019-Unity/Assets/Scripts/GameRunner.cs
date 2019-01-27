@@ -10,6 +10,7 @@ public class GameRunner : MonoBehaviour
     public Transform UICanvasTransform;
     public Transform GameCanvasTransform;
 
+    public GameObject PersistentObjects;
     public GameObject SplashUI;
     public GameObject RunningUI;
     public GameObject ReviewUI;
@@ -18,6 +19,14 @@ public class GameRunner : MonoBehaviour
 
     void Start()
     {
+        var roomStatus = new RoomStatus();
+
+        roomStatus.SetFloatValue(FloatRequirementType.Temperature, 0);
+        roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, 0);
+        roomStatus.SetBoolValue(BooleanRequirementType.Light, true);
+
+        StateData.Add("room", roomStatus);
+
         var stateList = new Dictionary<EGameState, IGameState>
         {
             { EGameState.Splash, new SplashScreenState(GameCanvasTransform, SplashUI) },
@@ -30,6 +39,8 @@ public class GameRunner : MonoBehaviour
             ) },
             { EGameState.Review, new ReviewScreenState(GameCanvasTransform, ReviewUI) },
         };
+
+        Instantiate(PersistentObjects, GameObject.Find("PersistentObjects").transform);
 
         GameStateMachine = new GameStateMachine(stateList, EGameState.Splash);
     }
