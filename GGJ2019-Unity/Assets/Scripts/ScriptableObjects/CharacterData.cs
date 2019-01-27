@@ -3,11 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+public struct SummaryReview
+{
+
+    public int Grade { get; private set; }
+    public string Review { get; private set; }
+
+    public SummaryReview(int grade, string review) : this()
+    {
+        Grade = grade;
+        Review = review;
+    }
+
+}
+
 [CreateAssetMenu(menuName = "ScriptableObjects/CharacterData")]
 public class CharacterData : ScriptableObject
 {
     [SerializeField] private string _name;
     public string Name { get { return _name; } }
+
+    [SerializeField] private string _address;
+    public string Location
+    {
+        get
+        {
+            return _address;
+        }
+    }
+
+    [SerializeField] private string _occupation;
+    public string Occupation { get { return _occupation; } }
+
+    [SerializeField] private string _flavouredText;
+    public string FlavouredText { get { return _flavouredText; } }
 
     [SerializeField] private RequirementGroup _requirements;
 
@@ -15,14 +45,15 @@ public class CharacterData : ScriptableObject
 
     [SerializeField] private RealtimeFeedbackData _realtimeFeedbackData;
 
-    public float GetSatisfaction(RoomStatus status)
+
+    public int GetSatisfaction(RoomStatus status)
     {
         var satisfaction = _requirements.GetSatisfaction(status);
         Debug.Log("Current satisfaction is " + satisfaction);
         return satisfaction;
     }
 
-    public string GetSummaryReview(int satisfaction)
+    public SummaryReview GetSummaryReview(int satisfaction)
     {
         int grade = 0;
         if (satisfaction <= 0)
@@ -41,7 +72,7 @@ public class CharacterData : ScriptableObject
         {
             grade = 5;
         }
-        return _reviewDialogData.GetSummaryReview(grade);
+        return new SummaryReview(grade, _reviewDialogData.GetSummaryReview(grade));
     }
 
     public List<Review> GetSubReviews(RoomStatus conditions)
