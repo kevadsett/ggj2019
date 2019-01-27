@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Name: Vadim
   m_EditorClassIdentifier: 
   _name: Vadim
+  _address: 'Brasov, Romania. Sometimes Guildford. '
+  _occupation: ' Game designer.'
+  _flavouredText: 'Fed up with the hypersexualisation of vampires, based on our dietary
+    requirements. Feeding is a chore, not a pleasure. #notallvampires'
   _requirements: {fileID: 11400000, guid: b36a8e9539e6a464aa2b1e0d6a76ff15, type: 2}
   _reviewDialogData: {fileID: 11400000, guid: f59e3e03654a96c4a9c273d32d543521, type: 2}
   _realtimeFeedbackData: {fileID: 11400000, guid: 836ea0ade2c014c23a06d9158a4b5595,
     type: 2}
+  _sprite: {fileID: 21300000, guid: b7f59023f83a84c1f919ea429da0516f, type: 3}

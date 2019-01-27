@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4301dd94a0da57643897accfcea8b0d7, type: 3}
   m_Name: WilburTemperature
   m_EditorClassIdentifier: 
-  _minValue: 0.5
-  _maxValue: 1
+  _minValue: 0
+  _maxValue: 0.5
   _requirementType: 1
   _tooHighDialog: It was swelteringly hot. Most unpleasant.
   _tooLowDialog: 
