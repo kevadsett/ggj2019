@@ -13,12 +13,12 @@ public class RealtimeFeedbackData : ScriptableObject
 
     public Sprite GetSprite(float satisfaction)
     {
-        if (satisfaction < 2)
+        if (satisfaction <= 2)
         {
             return _sadAvatar;
         }
 
-        if (satisfaction < 4)
+        if (satisfaction <= 4)
         {
             return _neutralAvatar;
         }
