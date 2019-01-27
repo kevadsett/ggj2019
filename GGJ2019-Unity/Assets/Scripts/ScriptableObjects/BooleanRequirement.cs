@@ -41,11 +41,13 @@ public class BooleanRequirement : Requirement
 
     public override Review GetReview(RoomStatus conditions)
     {
+        string dialog = "";
         bool currentBoolStatus;
+        bool meetsCondition;
         if (conditions.TryGetBoolValue(_type, out currentBoolStatus))
         {
 
-            bool meetsCondition = currentBoolStatus == _requiredValue;
+            meetsCondition = currentBoolStatus == _requiredValue;
             if (meetsCondition != _previouslyMetConditions || _initialised == false)
             {
                 if (meetsCondition == true)
@@ -62,11 +64,7 @@ public class BooleanRequirement : Requirement
 
                 if (meetsCondition)
                 {
-                    string dialog = meetsCondition ? _satisfiedDialog : _unsatisfiedDialog;
-
                     _initialised = true;
-
-                    return new Review(dialog, meetsCondition ? 1 : -1);
                 }
                
             }
@@ -75,7 +73,8 @@ public class BooleanRequirement : Requirement
         {
             throw new System.Exception("Type " + _type + " doesn't exist in dictionary");
         }
-        return new Review();
+        dialog = meetsCondition ? _satisfiedDialog : _unsatisfiedDialog;
+        return new Review(dialog, meetsCondition ? 1 : -1);
     }
 
     void EventManager_ValueChanged(bool obj)

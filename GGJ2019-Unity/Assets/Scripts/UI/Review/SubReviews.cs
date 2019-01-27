@@ -10,8 +10,9 @@ public class SubReviews : ReviewRelatedText
         string textOfReviews = "";
         foreach (var item in subReviews)
         {
-            textOfReviews += "-" + item.Dialog + "/n";
+            textOfReviews += "-" + item.Dialog + "\n";
         }
+        Debug.Log(textOfReviews);
         relatedText.text = textOfReviews;
     }
 }
