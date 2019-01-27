@@ -10,6 +10,7 @@ public class CalendarUpdater : MonoBehaviour {
     public List<Sprite> Crosses;
     public Sprite CircleAndCross;
     public List<Transform> CalendarSlots;
+    private AudioSource _calendarSound;
 
     void Start () 
     {
@@ -18,6 +19,7 @@ public class CalendarUpdater : MonoBehaviour {
         int circleIndex = GameSettings.TenancyLength - 1;
         var circleImage = CalendarSlots[circleIndex].gameObject.AddComponent<Image>();
         circleImage.sprite = Circle;
+        _calendarSound = GameObject.Find("CalendarSound").GetComponent<AudioSource>();
     }
 
     private void OnDestroy()
@@ -39,7 +41,7 @@ public class CalendarUpdater : MonoBehaviour {
             var crossImage = crossObject.AddComponent<Image>();
             crossImage.sprite = Crosses[Random.Range(0, Crosses.Count)];
         }
-
+        _calendarSound.Play();
     }
 
 }

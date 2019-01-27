@@ -853,7 +853,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1815053667508534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99b08c5bde3c94fc2b471b8f96dd8c6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 97d5716822f284edaac3032e254e4f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GameSettings: {fileID: 11400000, guid: d2ab590f507b742dfa38852cfaa56fa9, type: 2}
@@ -894,6 +894,7 @@ MonoBehaviour:
   - {fileID: 224108131241669326}
   - {fileID: 224165587916875340}
   - {fileID: 224476189441501058}
+  CalendarSound: {fileID: 0}
 --- !u!114 &114773995499471052
 MonoBehaviour:
   m_ObjectHideFlags: 1
