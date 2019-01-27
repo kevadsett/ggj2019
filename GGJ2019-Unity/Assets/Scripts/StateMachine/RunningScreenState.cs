@@ -40,14 +40,21 @@ namespace StateMachine
             base.OnEnter();
 
             _currentCharacter = _characters[Random.Range(0, _characters.Count)];
+
             Avatar = GameObject.Find("Avatar").GetComponent<Image>();
             FeedbackAudio = GameObject.Find("FeedbackAudio").GetComponent<AudioSource>();
 
             Avatar.sprite = _currentCharacter.GetRealtimeFeedbackImage(_roomStatus);
 
+            Debug.Log("Listening to events");
             EventManager.LightingChanged += EventManager_LightingChanged;
             EventManager.WaterLevelChanged += EventManager_WaterLevelChanged;
             EventManager.TemperatureChanged += EventManager_TemperatureChanged;
+            EventManager.SomethingGotBetter += ReactToSomethingGettingBetter;
+            EventManager.SomethingGotWorse += ReactToSomethingGettingWorse;
+
+            _currentCharacter.StartListening();
+
         }
 
         public override void Update(float dt)
@@ -88,34 +95,45 @@ namespace StateMachine
             EventManager.TemperatureChanged -= EventManager_TemperatureChanged;
             EventManager.WaterLevelChanged -= EventManager_WaterLevelChanged;
             EventManager.LightingChanged -= EventManager_LightingChanged;
+            EventManager.SomethingGotBetter -= ReactToSomethingGettingBetter;
+            EventManager.SomethingGotWorse -= ReactToSomethingGettingWorse;
         }
 
         void EventManager_LightingChanged(bool isOn)
         {
+            Debug.Log("Lighting changed to " + (isOn ? "on" : "off"));
             _roomStatus.SetBoolValue(BooleanRequirementType.Light, isOn);
-            DoCharacterReaction();
         }
 
         void EventManager_WaterLevelChanged(float newLevel)
         {
+            Debug.Log("Water level changed to " + newLevel);
+
             _roomStatus.SetFloatValue(FloatRequirementType.WaterLevel, newLevel);
-            DoCharacterReaction();
         }
 
         void EventManager_TemperatureChanged(float newTemperature)
         {
+            Debug.Log("Temperature changed to " + newTemperature);
             _roomStatus.SetFloatValue(FloatRequirementType.Temperature, newTemperature);
-            DoCharacterReaction();
         }
 
-        void DoCharacterReaction()
+        void ReactToValueChanged()
         {
-            var audio = _currentCharacter.GetRealtimeFeedbackAudio(_roomStatus);
             var newSprite = _currentCharacter.GetRealtimeFeedbackImage(_roomStatus);
             Avatar.sprite = newSprite;
-            FeedbackAudio.clip = audio;
+        }
+
+        void ReactToSomethingGettingWorse()
+        {
+            FeedbackAudio.clip = _currentCharacter.GetSadSound();
             FeedbackAudio.Play();
         }
 
+        void ReactToSomethingGettingBetter()
+        {
+            FeedbackAudio.clip = _currentCharacter.GetHappySound();
+            FeedbackAudio.Play();
+        }
     }
 }

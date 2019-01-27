@@ -5,17 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/RealtimeFeedbackData")]
 public class RealtimeFeedbackData : ScriptableObject
 {
-    [SerializeField] private AudioClip _happyClip;
-    [SerializeField] private AudioClip _sadClip;
+    [SerializeField] public AudioClip HappyClip;
+    [SerializeField] public AudioClip SadClip;
     [SerializeField] private Sprite _happyAvatar;
     [SerializeField] private Sprite _neutralAvatar;
     [SerializeField] private Sprite _sadAvatar;
-
-    public AudioClip GetAudioClip(float satisfaction)
-    {
-        //crude implemention that only has 2 audio clip, to be modified if need a better implementation
-        return satisfaction > 0.5 ? _happyClip : _sadClip;
-    }
 
     public Sprite GetSprite(float satisfaction)
     {

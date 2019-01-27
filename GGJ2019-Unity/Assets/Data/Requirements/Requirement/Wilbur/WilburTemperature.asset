@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minValue: 0.5
   _maxValue: 1
-  _requirementType: 0
+  _requirementType: 1
   _tooHighDialog: It was swelteringly hot. Most unpleasant.
   _tooLowDialog: 
   _withinRangeDialog: Tasteful furnishings.

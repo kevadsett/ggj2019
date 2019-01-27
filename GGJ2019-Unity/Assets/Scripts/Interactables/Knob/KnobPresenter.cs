@@ -24,6 +24,13 @@ public class KnobPresenter
         _currentValue += xDiff * VALUE_CHANGE_PER_XDIFF;
         _currentValue = Mathf.Clamp01(_currentValue);
 
+        _view.OnValueChange(_currentValue / MAX_VALUE);
+    }
+
+    public void OnDeactivate(GameObject gameObject)
+    {
+        // because the knob is backwards and game jam
+        _currentValue = 1 - _currentValue;
         switch (_floatRequirementType)
         {
             case FloatRequirementType.WaterLevel:
@@ -35,12 +42,6 @@ public class KnobPresenter
             default:
                 throw new ArgumentException("we do not support that type yet, implement yourself noob");
         }
-
-        _view.OnValueChange(_currentValue / MAX_VALUE);
-    }
-
-    public void OnDeactivate(GameObject gameObject)
-    {
         gameObject.SetActive(false);
     }
 }

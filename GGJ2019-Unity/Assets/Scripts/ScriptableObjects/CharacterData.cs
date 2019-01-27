@@ -17,7 +17,9 @@ public class CharacterData : ScriptableObject
 
     public float GetSatisfaction(RoomStatus status)
     {
-        return _requirements.GetSatisfaction(status);
+        var satisfaction = _requirements.GetSatisfaction(status);
+        Debug.Log("Current satisfaction is " + satisfaction);
+        return satisfaction;
     }
 
     public string GetSummaryReview(int satisfaction)
@@ -50,13 +52,26 @@ public class CharacterData : ScriptableObject
         return _subReviews;
     }
 
-    public AudioClip GetRealtimeFeedbackAudio(RoomStatus status)
+    public AudioClip GetSadSound()
     {
-        return _realtimeFeedbackData.GetAudioClip(GetSatisfaction(status));
+        return _realtimeFeedbackData.SadClip;
+    }
+
+    public AudioClip GetHappySound()
+    {
+        return _realtimeFeedbackData.HappyClip;
     }
 
     public Sprite GetRealtimeFeedbackImage(RoomStatus status)
     {
         return _realtimeFeedbackData.GetSprite(GetSatisfaction(status));
+    }
+
+    public void StartListening()
+    {
+        foreach (var requirement in _requirements.Requirements)
+        {
+            requirement.StartListening();
+        }
     }
 }

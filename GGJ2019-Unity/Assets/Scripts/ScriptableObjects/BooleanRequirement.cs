@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using StateMachine;
 
 public enum BooleanRequirementType
 {
@@ -15,19 +16,62 @@ public enum BooleanRequirementType
 public class BooleanRequirement : Requirement
 {
     [SerializeField] BooleanRequirementType _type;
-    [SerializeField] bool _expectedValue;
+    [SerializeField] bool _requiredValue;
     [SerializeField] string _satisfiedDialog;
     [SerializeField] string _unsatisfiedDialog;
 
+    private bool _previouslyMetConditions;
+    private bool test;
+    private bool _initialised;
+
+    public override void StartListening()
+    {
+        switch(_type)
+        {
+            case BooleanRequirementType.Light:
+                Debug.Log("Listening for light changes");
+                EventManager.LightingChanged += EventManager_ValueChanged;
+                break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.LightingChanged -= EventManager_ValueChanged;
+    }
+
     public override Review GetReview(RoomStatus conditions)
     {
-        bool metConditions;
-        if (conditions.TryGetBoolValue(_type, out metConditions))
+        bool currentBoolStatus;
+        if (conditions.TryGetBoolValue(_type, out currentBoolStatus))
         {
-            if (metConditions == _expectedValue)
+            Debug.Log("currentBoolStatus: " + currentBoolStatus + ", _expectedValue: " + _requiredValue);
+
+            bool meetsCondition = currentBoolStatus == _requiredValue;
+            Debug.Log("meetsCondition: " + meetsCondition + ", previouslyMet: " + _previouslyMetConditions + ", initialised: " + _initialised);
+            if (meetsCondition != _previouslyMetConditions || _initialised == false)
             {
-                string dialog = metConditions ? _satisfiedDialog : _unsatisfiedDialog;
-                return new Review(dialog, metConditions ? 1 : -1);
+                if (meetsCondition == true)
+                {
+                    Debug.Log(_type + " got better");
+                    EventManager.Call_SomethingGotBetter();
+                }
+                else
+                {
+                    Debug.Log(_type + " got worse");
+                    EventManager.Call_SomethingGotWorse();
+                }
+                _previouslyMetConditions = meetsCondition;
+
+                if (meetsCondition)
+                {
+                    string dialog = meetsCondition ? _satisfiedDialog : _unsatisfiedDialog;
+
+                    _initialised = true;
+
+                    return new Review(dialog, meetsCondition ? 1 : -1);
+                }
+               
             }
         }
         else
@@ -36,4 +80,11 @@ public class BooleanRequirement : Requirement
         }
         return new Review();
     }
+
+    void EventManager_ValueChanged(bool obj)
+    {
+        Debug.Log("Heard a light change");
+        GetReview((RoomStatus)StateData.Get("room"));
+    }
+
 }

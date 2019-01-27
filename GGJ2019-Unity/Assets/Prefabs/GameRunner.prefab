@@ -61,3 +61,4 @@ MonoBehaviour:
   ReviewUI: {fileID: 1597163152666736, guid: ca3322bffc2f640589d2de8c4debfa8c, type: 2}
   Characters:
   - {fileID: 11400000, guid: ac1d42918610d9b4dac14ba6124dfd0c, type: 2}
+  - {fileID: 11400000, guid: 6d31158213066a84ca6c78350918636a, type: 2}

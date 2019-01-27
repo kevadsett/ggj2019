@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6cbe86ff96c1e04caa06dd6f627ebe6, type: 3}
   m_Name: WilburRequirementGroup
   m_EditorClassIdentifier: 
-  _requirements: []
+  _requirements:
+  - {fileID: 11400000, guid: e56a2591755b1e24fbbe9d8d1d360625, type: 2}

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418fbb3c7c8818c4dae0e4bce3361c93, type: 3}
   m_Name: VadimLight
   m_EditorClassIdentifier: 
-  _type: 1
-  _expectedValue: 1
+  _type: 0
+  _expectedValue: 0
   _satisfiedDialog: Some glaring errors of interior design.
   _unsatisfiedDialog: Definite sense of style.

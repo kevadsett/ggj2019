@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Requirement : ScriptableObject
 {
     public abstract Review GetReview(RoomStatus conditions);
+    public abstract void StartListening();
 }
 
 public struct Review

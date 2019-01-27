@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f081f9dc68ff29b43beac23bb2138cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floatRequirementType: 0
+  _floatRequirementType: 1
   _goToDeactivate: {fileID: 1930891889327660}
 --- !u!114 &114313568001905132
 MonoBehaviour:

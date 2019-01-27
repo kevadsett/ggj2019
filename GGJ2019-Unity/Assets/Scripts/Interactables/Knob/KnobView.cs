@@ -33,6 +33,7 @@ public class KnobView : MonoBehaviour
         else
         {
             _goToDeactivate.SetActive(false);
+            _knobPresenter.OnDeactivate(_goToDeactivate);
         }
     }
 

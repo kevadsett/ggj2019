@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class EventManager : UnityEngine.MonoBehaviour
 {
@@ -63,6 +64,7 @@ public class EventManager : UnityEngine.MonoBehaviour
     {
         if (TemperatureChanged != null)
         {
+            Debug.Log("Broadcasting temperature change");
             TemperatureChanged(newTemperature);
         }
     }
@@ -73,6 +75,26 @@ public class EventManager : UnityEngine.MonoBehaviour
         if (GameTimeChanged != null)
         {
             GameTimeChanged(newDay);
+        }
+    }
+
+    public static event Action SomethingGotWorse;
+    public static void Call_SomethingGotWorse()
+    {
+        if (SomethingGotWorse != null)
+        {
+            Debug.Log("Something got worse!");
+            SomethingGotWorse();
+        }
+    }
+
+    public static event Action SomethingGotBetter;
+    public static void Call_SomethingGotBetter()
+    {
+        if (SomethingGotBetter != null)
+        {
+            Debug.Log("Something got better!");
+            SomethingGotBetter();
         }
     }
 }
