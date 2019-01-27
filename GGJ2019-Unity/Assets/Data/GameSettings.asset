@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   _tenancyLength: 10
-  _secondsPerDay: 5
+  _secondsPerDay: 10

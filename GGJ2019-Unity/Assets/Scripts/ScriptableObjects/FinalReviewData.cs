@@ -12,6 +12,6 @@ public class FinalReviewData : ScriptableObject
     {
         Debug.Assert(_dialogues.Length <= GameConfig.MAX_REVIEW_GRADE);
 
-        return _dialogues[finalGrade];
+        return _dialogues[finalGrade - 1];
     }
 }

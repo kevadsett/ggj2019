@@ -49,29 +49,15 @@ public class CharacterData : ScriptableObject
     public int GetSatisfaction(RoomStatus status)
     {
         var satisfaction = _requirements.GetSatisfaction(status);
-        Debug.Log("Current satisfaction is " + satisfaction);
         return satisfaction;
     }
 
     public SummaryReview GetSummaryReview(int satisfaction)
     {
         int grade = 0;
-        if (satisfaction <= 0)
-        {
-            grade = Random.Range(1, 2);
-        }
-        else if (satisfaction == 1)
-        {
-            grade = 3;
-        }
-        else if (satisfaction == 2)
-        {
-            grade = 4;
-        }
-        else if (satisfaction == 3)
-        {
-            grade = 5;
-        }
+        int requirementCount = _requirements.Requirements.Count;
+        float gradeStep = satisfaction / (float)requirementCount;
+        grade = Mathf.Clamp(Mathf.FloorToInt(gradeStep * requirementCount * 5 / requirementCount), 1, 5);
         return new SummaryReview(grade, _reviewDialogData.GetSummaryReview(grade));
     }
 
@@ -95,7 +81,8 @@ public class CharacterData : ScriptableObject
 
     public Sprite GetRealtimeFeedbackImage(RoomStatus status)
     {
-        return _realtimeFeedbackData.GetSprite(GetSatisfaction(status));
+        var summaryReview = GetSummaryReview(GetSatisfaction(status));
+        return _realtimeFeedbackData.GetSprite(summaryReview.Grade);
     }
 
     public void StartListening()
